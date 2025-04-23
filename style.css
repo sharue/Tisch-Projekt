@@ -1,0 +1,316 @@
+/* === Grundlayout & Schrift === */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  transition: all 0.3s ease;
+}
+
+body.darkmode {
+  background-color: #111;
+  color: #fff;
+}
+
+/* === Navigation === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000;
+}
+
+body.darkmode .navbar {
+  background-color: #1c1c1c;
+  border-color: #333;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+body.darkmode .nav-links a,
+body.darkmode .logo {
+  color: #fff;
+}
+
+/* === Darkmode Toggle === */
+.darkmode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.darkmode-toggle svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: fill 0.3s ease;
+}
+
+body.darkmode .darkmode-toggle svg {
+  fill: #fff;
+}
+
+body:not(.darkmode) .darkmode-toggle svg {
+  fill: #000;
+}
+
+/* === Mond-Icon === */
+.moon-icon {
+  width: 26px;
+  height: 26px;
+  transition: filter 0.3s;
+  position: relative;
+  top: 2px;
+}
+
+body:not(.darkmode) .moon-icon {
+  filter: brightness(0) invert(0);
+}
+
+body.darkmode .moon-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* === Content-Bereiche === */
+.content.centered {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+.content {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+body.shop .content {
+  padding-top: 40px;
+}
+
+/* === Shop-Bild === */
+.shop-image {
+  max-width: 600px;
+  width: 90%;
+  display: block;
+  margin: 30px auto 20px auto;
+  border-radius: 10px;
+}
+
+/* === Buttons === */
+.button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 30px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+body.darkmode .button {
+  background-color: #fff;
+  color: #111;
+}
+
+body.darkmode .button:hover {
+  background-color: #ddd;
+}
+
+/* === Produktübersicht (Grid) === */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+
+/* === Produktkarten === */
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.product-card .button {
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+body.darkmode .product-card {
+  background-color: #1c1c1c;
+  color: #eee;
+}
+
+/* === Spezialkarte (Konfigurator) === */
+.product-card.special {
+  border: 2px solid var(--primary);
+}
+
+/* === Bestellformular === */
+form.order-form {
+  max-width: 400px;
+  margin: 40px auto 0 auto;
+  text-align: left;
+}
+
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.order-form label {
+  font-weight: 500;
+}
+
+.order-form input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+  color: #777;
+  background-color: #f7f7f7;
+}
+
+body.darkmode .footer {
+  background-color: #111;
+  color: #888;
+}
+
+/* === Mobile Menü & Responsive === */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
+}
+
+body.darkmode .menu-toggle {
+  color: #fff;
+}
+
+.mobile-controls {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .desktop-theme-toggle {
+    display: none;
+  }
+
+  .mobile-theme-toggle {
+    display: block;
+  }
+
+  body.darkmode .nav-links {
+    background-color: #1c1c1c;
+  }
+}

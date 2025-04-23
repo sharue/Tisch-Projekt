@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mein Tisch – Startseite</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR wird hier per JS geladen -->
+  <div id="navbar"></div>
+
+  <!-- Hauptinhalt der Seite -->
+  <main class="content centered">
+    <h1 data-aos="fade-up">Willkommen bei Mein Tisch</h1>
+    <p data-aos="fade-up">Hier entsteht dein handgemachter Tisch aus Eishockeystöcken.</p>
+  </main>
+
+  <!-- Footer optional -->
+<div id="footer"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+  <!-- Script für den Navbar-Fetch -->
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+      // Jetzt script.js laden
+      const script = document.createElement("script");
+        script.src = "script.js";
+        script.defer = true;
+        document.body.appendChild(script);});
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</body>
+</html>

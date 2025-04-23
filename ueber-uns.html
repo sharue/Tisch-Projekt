@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Über uns – Mein Tisch</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Platzhalter -->
+  <div id="navbar"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Jetzt script.js laden
+        const script = document.createElement("script");
+        script.src = "script.js";
+        script.defer = true;
+        document.body.appendChild(script);
+      });
+  </script>
+  <main class="content centered">
+    <h1 data-aos="fade-up">Über uns</h1>
+    <p data-aos="fade-up">Wir sind zwei Freunde mit einer gemeinsamen Leidenschaft: Holz, Handwerk und kreative Ideen.</p>
+    <p data-aos="fade-up">Unser Ziel ist es, aus scheinbar gewöhnlichen Materialien etwas Einzigartiges zu schaffen – so entstand auch unser erster Tisch.</p>
+    <p data-aos="fade-up">Qualität, Nachhaltigkeit und Individualität stehen bei uns an erster Stelle.</p>
+  </main>
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</body>
+</html>

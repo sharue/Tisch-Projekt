@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wunschtisch anfragen – Mein Tisch</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Platzhalter -->
+  <div id="navbar"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Jetzt script.js laden
+        const script = document.createElement("script");
+        script.src = "script.js";
+        script.defer = true;
+        document.body.appendChild(script);
+      });
+  </script>
+
+  <main class="content">
+    <img data-aos="zoom-in" src="img/wunschtisch.jpg" class="shop-image" />
+    <h2 data-aos="fade-up">Konfiguriere deinen persönlichen Wunschtisch</h2>
+    <p data-aos="fade-up">Du möchtest deinen ganz eigenen Tisch mit speziellen Maßen, Materialien oder Designideen? Teile uns deine Wünsche mit – wir erstellen dir ein unverbindliches Angebot.</p>
+
+    <h3>Unverbindlich anfragen</h3>
+    <form action="https://formsubmit.co/timoruettener@hotmail.com" method="POST" class="order-form">
+      <input type="hidden" name="_subject" value="Wunschtisch-Anfrage">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="Tisch" value="Individuell konfigurierter Tisch (Anfrage)">
+
+      <label for="name">Name *</label><br>
+      <input type="text" id="name" name="Name" required><br><br>
+
+      <label for="email">E-Mail *</label><br>
+      <input type="email" id="email" name="E-Mail" required><br><br>
+
+      <label for="strasse">Straße *</label><br>
+      <input type="text" id="strasse" name="Straße" required><br><br>
+
+      <label for="nummer">Hausnummer *</label><br>
+      <input type="text" id="nummer" name="Hausnummer" required><br><br>
+
+      <label for="plz">Postleitzahl *</label><br>
+      <input type="text" id="plz" name="PLZ" required><br><br>
+
+      <label for="ort">Ort *</label><br>
+      <input type="text" id="ort" name="Ort" required><br><br>
+
+      <label for="nachricht">Wunsch-Konfiguration *</label><br>
+      <textarea id="nachricht" name="Wunschdetails" rows="4" placeholder="Form, Maße, Material, Sonderwünsche" required></textarea><br><br>
+
+      <button data-aos="fade-up" type="submit" class="button">Unverbindliches Angebot einholen</button>
+    </form>
+
+    <br><br>
+    <a href="shop.html" class="button">← Zurück zum Shop</a>
+  </main>
+
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</body>
+</html>
