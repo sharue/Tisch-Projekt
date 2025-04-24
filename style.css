@@ -4,7 +4,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: #ffffff;
   color: #111;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body.darkmode {
@@ -81,11 +81,9 @@ body:not(.darkmode) .darkmode-toggle svg {
   fill: #000;
 }
 
-/* === Mond-Icon === */
 .moon-icon {
   width: 26px;
   height: 26px;
-  transition: filter 0.3s;
   position: relative;
   top: 2px;
 }
@@ -98,7 +96,9 @@ body.darkmode .moon-icon {
   filter: brightness(0) invert(1);
 }
 
-/* === Content-Bereiche === */
+<img src="mondicon.png" alt="Mond Icon" class="moon-icon">
+
+/* === Content === */
 .content.centered {
   height: calc(100vh - 100px);
   display: flex;
@@ -112,7 +112,7 @@ body.darkmode .moon-icon {
 }
 
 .content {
-  padding: 60px 20px;
+  padding: 20px;
   text-align: center;
   max-width: 700px;
   margin: auto;
@@ -120,6 +120,14 @@ body.darkmode .moon-icon {
 
 body.shop .content {
   padding-top: 40px;
+}
+
+body > main.content {
+  margin-top: 20px;
+}
+
+body > main.content .slider {
+  margin-top: 0;
 }
 
 /* === Shop-Bild === */
@@ -157,7 +165,7 @@ body.darkmode .button:hover {
   background-color: #ddd;
 }
 
-/* === Produktübersicht (Grid) === */
+/* === Produktübersicht === */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -208,7 +216,14 @@ body.darkmode .product-card {
   color: #eee;
 }
 
-/* === Spezialkarte (Konfigurator) === */
+.product-card img,
+.slides img {
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
 .product-card.special {
   border: 2px solid var(--primary);
 }
@@ -254,7 +269,16 @@ body.darkmode .footer {
   color: #888;
 }
 
-/* === Mobile Menü & Responsive === */
+.footer-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-nav a:hover {
+  color: #555;
+}
+
+/* === Mobile Menü === */
 .menu-toggle {
   display: none;
   font-size: 28px;
@@ -313,4 +337,146 @@ body.darkmode .menu-toggle {
   body.darkmode .nav-links {
     background-color: #1c1c1c;
   }
+}
+
+/* === Hero-Bereich === */
+.hero {
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.usp {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.usp-points {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+@media(min-width: 768px) {
+  .usp-points {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.highlight {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.cta {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.cta .button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.cta .button:hover {
+  background-color: #f0f0f0;
+}
+
+/* === Slider === */
+.slider {
+  position: relative;
+  max-width: 700px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slides img {
+  flex-shrink: 0;
+  width: 700px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 15px;
+  align-items: center;
+}
+
+.nav button {
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #111;
+}
+
+body.darkmode .dot {
+  background-color: #555;
+}
+
+body.darkmode .dot.active {
+  background-color: #fff;
 }

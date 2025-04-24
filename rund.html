@@ -27,12 +27,32 @@
   </script>
 
   <main class="content">
-    <img data-aos="zoom-in" src="img/rund-tisch.jpg" class="shop-image" />
-    <h2 data-aos="fade-up">Runder Tisch aus Eishockeystöcken</h2>
-    <p data-aos="fade-up"><strong>Maße:</strong> 90 Durchmesser × 75 cm<br>
-       <strong>Material:</strong> Eishockeystöcke, Glasplatte, Massivholzbeine<br>
-       <strong>Preis:</strong> ab 699€ (auf Anfrage)</p>
-
+    <main class="content">
+      <!-- Galerie statt einzelnes Bild -->
+      <div class="slider" data-aos="fade-up">
+        <div class="slides" id="slides">
+                              
+          <img src="img/rund-tisch.jpg" alt="Runder Tisch" />
+          <img src="img/rund-detail1.jpg" alt="Rund Detail 1" />
+          
+          
+        </div>
+        <div class="nav">
+          <button onclick="prevSlide()">‹</button>
+          <button onclick="nextSlide()">›</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    
+      <h2 data-aos="fade-up">Runder Tisch aus Eishockeystöcken</h2>
+      <p data-aos="fade-up"><strong>Maße:</strong> 90 Durchmesser × 75 cm<br>
+         <strong>Material:</strong> Eishockeystöcke, Glasplatte, Massivholzbeine<br>
+         <strong>Preis:</strong> ab 699€ (auf Anfrage)</p>
+    
+      <!-- Dein Formular bleibt unverändert -->
+      <!-- ... -->
+    </main>
+    
     <h3>Jetzt bestellen</h3>
     <form action="https://formsubmit.co/timoruettener@hotmail.com" method="POST" class="order-form">
       <input type="hidden" name="_subject" value="Neue Tisch-Bestellung über Shop">
@@ -83,3 +103,40 @@
 </body>
 </html>
  
+
+<script>
+  const slides = document.getElementById('slides');
+  const totalSlides = slides.children.length;
+  let currentIndex = 0;
+
+  const dotsContainer = document.getElementById('dots');
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateSlider() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateSlider();
+  }
+</script>
